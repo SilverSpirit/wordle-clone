@@ -7,7 +7,7 @@ def main():
 
     with open('scrabble_dictionary.txt') as f:
         valid_words = {word.strip().upper() for word in f.readlines() if
-                       len(word.strip()) == n_letters == len(set(word.strip()))}
+                       len(word.strip()) == n_letters}
 
     chosen_word = random.choice(list(valid_words))
     board = [['_' for _ in range(n_letters)] for _ in range(n_chances)]
@@ -15,7 +15,6 @@ def main():
     guess = '_'
 
     while True:
-
         print('__________________')
         for row in board:
             print(' '.join(row))
@@ -33,13 +32,25 @@ def main():
             print('\nEnter a valid 5 letter word:\n')
             guess = input('').upper()
 
-        for i, letter in enumerate(guess):
+        guess_list = list(guess)
+        chosen_letters = list(chosen_word)
+
+        for i, letter in enumerate(guess_list):
             if letter == chosen_word[i]:
-                board[turn][i] = f'[{letter}]'
-            elif letter in chosen_word:
-                board[turn][i] = f'({letter})'
-            else:
-                board[turn][i] = f' {letter} '
+                guess_list[i] = f'[{letter}]'
+                chosen_letters[i] = '_'
+
+        chosen_letters = {char for char in chosen_letters if char.isalpha()}
+        for i, entry in enumerate(guess_list):
+            if entry in chosen_letters:
+                guess_list[i] = f'({entry})'
+                chosen_letters.remove(entry)
+
+        for i, entry in enumerate(guess_list):
+            if entry.isalpha():
+                guess_list[i] = f' {entry} '
+
+        board[turn] = guess_list
 
         # remove guess from valid words
         valid_words.remove(guess)
