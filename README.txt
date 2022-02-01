@@ -1,5 +1,5 @@
 # wordle-clone
-Lazy Python wordle clone
+Lazy Python wordle clone. Run with python wordle.py
 
 [] denotes a letter in the right spot, () indicates a letter in the wrong spot.
 
