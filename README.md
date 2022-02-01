@@ -6,6 +6,7 @@ Lazy Python wordle clone
 Enter a valid 5 letter word:
 
 WEIRS
+
 __________________
 (S)  T   O  [R] (E)
 (R)  A   C  (E)  R
@@ -14,4 +15,6 @@ __________________
 [W] [E] [I] [R] [S]
 _ _ _ _ _
 __________________
+
 Win!
+
