@@ -3,6 +3,8 @@ Lazy Python wordle clone. Run with python wordle.py
 
 [] denotes a letter in the right spot, () indicates a letter in the wrong spot.
 
+Example:
+
 Enter a valid 5 letter word:
 
 WEIRS
